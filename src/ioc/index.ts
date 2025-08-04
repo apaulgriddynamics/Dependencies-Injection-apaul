@@ -3,15 +3,15 @@ import IoCContainer from "ioc-lite";
 import { Logger } from "../services/logger";
 import { HTTP } from "../services/http";
 import { Users } from "../services/users";
-import type { ApiConfig } from "../types";
 
-export const createIoCContainer = (config?: ApiConfig) => {
-  const ioc = new IoCContainer();
+const ioc = new IoCContainer();
 
-  ioc.register("config", config);
+export const createIoCContainer = () => {
   ioc.registerClass("logger", Logger);
   ioc.registerClass("http", HTTP);
   ioc.registerClass("users", Users);
 
   return ioc;
 };
+
+export const getIoCContainer = () => ioc;
